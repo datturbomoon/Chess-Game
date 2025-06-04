@@ -283,6 +283,7 @@ function showMessage(msg) {
 function checkEndGame() {
   const next = turn;
 
+  // 👑 Check if either king is missing (capture)
   const flatBoard = chessState.flat();
   const whiteKingPresent = flatBoard.includes("K");
   const blackKingPresent = flatBoard.includes("k");
@@ -297,14 +298,17 @@ function checkEndGame() {
     return;
   }
 
+  // ♟️ Check for legal moves
   if (!hasLegalMoves(chessState, next)) {
     if (isKingInCheck(chessState, next)) {
       showMessage(`Checkmate! ${next === "white" ? "Black" : "White"} wins!`);
     } else {
       showMessage("Stalemate! Draw.");
     }
+    gameOver = true;
   }
 }
+
 
 function onCellClick(e) {
   if (gameOver) return;
