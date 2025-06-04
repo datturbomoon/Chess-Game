@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chessboard Game</title>
+    <link rel="stylesheet" href="output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-black via-gray-900 to-gray-800 max-h-screen">
+    <div class="flex flex-col items-center justify-center min-h-screen bg-transparent">
+        <div class="bg-gray-800 border-2 border-gray-700 rounded-lg p-6 pl-0 pb-0 shadow-lg">
+            <div class="flex">
+
+                <!-- Y-Axis (Numbers 8–1) -->
+                <div class="flex flex-col justify-between mr-2 ml-2.5 mt-2 mb-8">
+                    <span class="text-gray-400 text-xs h-auto sm:text-sm flex items-center justify-center">8</span>
+                    <span class="text-gray-400 text-xs h-auto sm:text-sm flex items-center justify-center">7</span>
+                    <span class="text-gray-400 text-xs h-auto sm:text-sm flex items-center justify-center">6</span>
+                    <span class="text-gray-400 text-xs h-auto sm:text-sm flex items-center justify-center">5</span>
+                    <span class="text-gray-400 text-xs h-auto sm:text-sm flex items-center justify-center">4</span>
+                    <span class="text-gray-400 text-xs h-auto sm:text-sm flex items-center justify-center">3</span>
+                    <span class="text-gray-400 text-xs h-auto sm:text-sm flex items-center justify-center">2</span>
+                    <span class="text-gray-400 text-xs h-auto sm:text-sm flex items-center justify-center">1</span>
+                </div>
+
+                <!-- Chessboard -->
+                <div class="flex flex-col shadow-lg">
+                    <!-- <div id="chessboard"
+                        class="grid grid-cols-8 grid-rows-8 gap-0 rounded-lg border-2 border-gray-700 overflow-hidden">
+                    </div> -->
+                    <div id="chessboard"
+                        class="grid grid-cols-8 grid-rows-8 gap-0 rounded-lg border-2 border-gray-700 overflow-hidden w-[90vw] max-w-[32rem] sm:w-[32rem] sm:h-[32rem] aspect-square">
+                    </div>
+
+
+                    <!-- X-Axis (Letters A–H) -->
+                    <div class="grid grid-cols-8 mt-1 mb-1">
+                        <!-- <span class="text-gray-400 text-xs text-center">A</span> -->
+                        <span class="text-gray-400 text-xs sm:text-sm text-center">A</span>
+                        <span class="text-gray-400 text-xs sm:text-sm text-center">B</span>
+                        <span class="text-gray-400 text-xs sm:text-sm text-center">C</span>
+                        <span class="text-gray-400 text-xs sm:text-sm text-center">D</span>
+                        <span class="text-gray-400 text-xs sm:text-sm text-center">E</span>
+                        <span class="text-gray-400 text-xs sm:text-sm text-center">F</span>
+                        <span class="text-gray-400 text-xs sm:text-sm text-center">G</span>
+                        <span class="text-gray-400 text-xs sm:text-sm text-center">H</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <button id="resetBtn"
+        class="fixed bottom-8 left-8 px-4 py-2 bg-red-900 text-white rounded hover:bg-red-700 active:bg-red-900 shadow-lg">Reset
+        Board</button>
+    <div class="fixed bottom-8 right-8 flex gap-4">
+        <button id="undoBtn" class="px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-600">Undo</button>
+        <button id="redoBtn" class="px-4 py-2 bg-green-700 text-white rounded hover:bg-green-600">Redo</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
