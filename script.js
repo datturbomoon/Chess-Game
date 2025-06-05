@@ -237,6 +237,8 @@ function hasLegalMoves(board, color) {
 }
 
 function showMessage(msg) {
+  console.log("showMessage called:", msg);
+
   // Remove any previous overlay
   const prev = document.getElementById("chess-message-overlay");
   if (prev) prev.remove();
@@ -263,8 +265,9 @@ function showMessage(msg) {
   setTimeout(() => {
     // Only hide if this overlay is still present
     if (document.body.contains(overlay)) {
-      overlay.style.display = "none";
-      overlay.style.pointerEvents = "none";
+      // overlay.style.display = "none";
+      // overlay.style.pointerEvents = "none";
+      document.body.removeChild(overlay);
     }
   }, 4000);
 }
@@ -281,6 +284,9 @@ function showMessage(msg) {
 // }
 
 function checkEndGame() {
+  console.log("Checking if", turn === "white" ? "Black" : "White", "is in checkmate.");
+
+
   const next = turn;
 
   // 👑 Check if either king is missing (capture)
@@ -340,8 +346,8 @@ function onCellClick(e) {
     //   selected = null;
     //   renderBoard();
     //   checkEndGame();
-
     // }
+
     if (
       isLegalMove(from, to, movingPiece) &&
       ((turn === "white" && isWhite(movingPiece)) ||
@@ -365,12 +371,14 @@ function onCellClick(e) {
       });
       currentMoveIndex++;
 
-      // ✅ Apply turn switch
+      checkEndGame(); // ✅ Checkmate is about the player who just moved
+
+      // ✅ Apply turn switch AFTER checking endgame
       turn = history[currentMoveIndex].turn;
       selected = null;
 
       renderBoard();
-      checkEndGame();
+
     } else {
       selected = null;
       renderBoard();
