@@ -237,11 +237,10 @@ function hasLegalMoves(board, color) {
 }
 
 function showMessage(msg) {
-  console.log("showMessage called:", msg);
-
   // Remove any previous overlay
   const prev = document.getElementById("chess-message-overlay");
   if (prev) prev.remove();
+
   // Create new overlay
   const overlay = document.createElement("div");
   overlay.id = "chess-message-overlay";
@@ -262,8 +261,9 @@ function showMessage(msg) {
   overlay.innerHTML = `<div style="background: #fffbe8; opacity: 0.98;" class='text-red-800 text-3xl font-extrabold px-10 py-8 rounded-2xl shadow-2xl border-4 border-yellow-600 animate-bounce drop-shadow-lg'>${msg}</div>`;
   document.body.appendChild(overlay);
   gameOver = true;
+  
+  // Use setTimeout to remove the overlay after 4 seconds
   setTimeout(() => {
-    // Only hide if this overlay is still present
     if (document.body.contains(overlay)) {
       // overlay.style.display = "none";
       // overlay.style.pointerEvents = "none";
@@ -272,39 +272,9 @@ function showMessage(msg) {
   }, 4000);
 }
 
-// function checkEndGame() {
-//   const next = turn;
-//   if (!hasLegalMoves(chessState, next)) {
-//     if (isKingInCheck(chessState, next)) {
-//       showMessage(`Checkmate! ${next === "white" ? "Black" : "White"} wins!`);
-//     } else {
-//       showMessage("Stalemate! Draw.");
-//     }
-//   }
-// }
-
 function checkEndGame() {
-  console.log("Checking if", turn === "white" ? "Black" : "White", "is in checkmate.");
-
-
-  const next = turn;
-
-  // 👑 Check if either king is missing (capture)
-  const flatBoard = chessState.flat();
-  const whiteKingPresent = flatBoard.includes("K");
-  const blackKingPresent = flatBoard.includes("k");
-
-  if (!whiteKingPresent) {
-    showMessage("Checkmate! Black wins!");
-    gameOver = true;
-    return;
-  } else if (!blackKingPresent) {
-    showMessage("Checkmate! White wins!");
-    gameOver = true;
-    return;
-  }
-
-  // ♟️ Check for legal moves
+  // const next = turn;
+  const next = turn === "white" ? "black" : "white";
   if (!hasLegalMoves(chessState, next)) {
     if (isKingInCheck(chessState, next)) {
       showMessage(`Checkmate! ${next === "white" ? "Black" : "White"} wins!`);
@@ -315,7 +285,42 @@ function checkEndGame() {
   }
 }
 
+// function checkEndGame() {
+//   // Toggle turn for next player
+//   // const next = turn;
+//   const next = turn === "white" ? "black" : "white";
 
+
+//   // 👑 Check if either king is missing (capture)
+//   const flatBoard = chessState.flat();
+//   const whiteKingPresent = flatBoard.includes("K");
+//   const blackKingPresent = flatBoard.includes("k");
+
+//   if (!whiteKingPresent) {
+//     showMessage("Checkmate! Black wins!");
+//     gameOver = true;
+//     return;
+//   } else if (!blackKingPresent) {
+//     showMessage("Checkmate! White wins!");
+//     gameOver = true;
+//     return;
+//   }
+
+  // ♟️ Check for legal moves
+  
+
+//   if (!hasLegalMoves(chessState, next)) {
+//   if (isKingInCheck(chessState, next)) {
+//     showMessage(`Checkmate! ${turn.charAt(0).toUpperCase() + turn.slice(1)} wins!`);
+//   } else {
+//     showMessage("Stalemate! Draw.");
+//   }
+//   gameOver = true;
+// }
+
+// }
+
+// Handle cell click events
 function onCellClick(e) {
   if (gameOver) return;
   const row = +e.currentTarget.dataset.row;
@@ -325,28 +330,6 @@ function onCellClick(e) {
     const from = [selected.row, selected.col];
     const to = [row, col];
     const movingPiece = chessState[selected.row][selected.col];
-    // if (
-    //   isLegalMove(from, to, movingPiece) &&
-    //   ((turn === "white" && isWhite(movingPiece)) ||
-    //     (turn === "black" && isBlack(movingPiece)))
-    // ) {
-    //   chessState[row][col] = movingPiece;
-    //   chessState[selected.row][selected.col] = "";
-
-    //   // Update history
-    //   history = history.slice(0, currentMoveIndex + 1); // trim future history
-    //   history.push({
-    //     board: JSON.parse(JSON.stringify(chessState)),
-    //     turn: turn === "white" ? "black" : "white",
-    //   });
-    //   currentMoveIndex++;
-
-    //   // Apply turn switch
-    //   turn = history[currentMoveIndex].turn;
-    //   selected = null;
-    //   renderBoard();
-    //   checkEndGame();
-    // }
 
     if (
       isLegalMove(from, to, movingPiece) &&
