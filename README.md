@@ -1,6 +1,6 @@
 # ♟️ Chess Game
 
-Just a simple chess game I built for the sake of it.
+A simple chess game I built, which chess players can use to test their moves.  
 
 Made using:
 - **HTML** + **Tailwind CSS**
