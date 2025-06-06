@@ -1,2 +1,21 @@
-# Chessboard-Game
-Responsive chess game built with vanilla JS and Tailwind CSS. Includes move history, checkmate detection, and mobile support.
+# ♟️ Chess Game
+
+Just a simple chess game I built for the sake of it.
+
+Made using:
+- **HTML** + **Tailwind CSS**
+- **Vanilla JavaScript** (no libraries)
+
+Features:
+- Basic legal move logic
+- Turn-based play
+- Checkmate and stalemate detection
+- Undo / Redo buttons
+- Reset anytime
+
+Click a piece, make a move — that’s it.
+
+I build little things like this to learn and improve.  
+Feel free to use the code or mess around with it!
+
+---
