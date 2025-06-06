@@ -265,16 +265,16 @@ function showMessage(msg) {
   // Use setTimeout to remove the overlay after 4 seconds
   setTimeout(() => {
     if (document.body.contains(overlay)) {
-      // overlay.style.display = "none";
-      // overlay.style.pointerEvents = "none";
-      document.body.removeChild(overlay);
+      overlay.style.display = "none";
+      overlay.style.pointerEvents = "none";
+      // document.body.removeChild(overlay);
     }
   }, 4000);
 }
 
 function checkEndGame() {
-  // const next = turn;
-  const next = turn === "white" ? "black" : "white";
+  const next = turn;
+  // const next = turn === "white" ? "black" : "white";
   if (!hasLegalMoves(chessState, next)) {
     if (isKingInCheck(chessState, next)) {
       showMessage(`Checkmate! ${next === "white" ? "Black" : "White"} wins!`);
