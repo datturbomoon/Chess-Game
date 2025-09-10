@@ -1,5 +1,9 @@
 # ♟️ Chess Game
 
+[View live demo here](https://chess.datturbomoon.space/)
+
+![snapshot](snapshot.png)
+
 A simple chess game I built, which chess players can use to test their moves.  
 
 Made using:
