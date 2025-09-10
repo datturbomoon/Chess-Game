@@ -1,7 +1,5 @@
 # ♟️ Chess Game
 
-[View live demo here](https://chess.datturbomoon.space/)
-
 ![snapshot](snapshot.png)
 
 A simple chess game I built, which chess players can use to test their moves.  
@@ -18,6 +16,10 @@ Features:
 - Reset anytime
 
 Click a piece, make a move — that’s it.
+
+[Live demo](https://chess.datturbomoon.space/)
+
+---
 
 I build little things like this to learn and improve.  
 Feel free to use the code or mess around with it!
